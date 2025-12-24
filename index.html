@@ -92,7 +92,10 @@ button {
 }
 
 button:hover {
-    background: #5a3bc0;
+      background: #e9a9c4;          
+    transform: translateY(-3px) scale(1.03); 
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    transition: 0.8s;
 }
 
 /* صورة */
@@ -128,13 +131,33 @@ button:hover {
     pointer-events: none;
     z-index: 9999;
 }
+.music-box {
+    margin-top: 15px;
+}
+
+.music-box button {
+    background: #5a3bc0;
+    color:#fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 15px;
+    cursor: pointer;
+}
+.music-box button:hover {
+    background: #e9a9c4;          
+    transform: translateY(-3px) scale(1.03); 
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    transition: 0.8s;
+}
+
 </style>
 </head>
 
 <body>
 
 <div class="card">
-    <div class="flags">🎉 🎈 🎊 🎈 🎉</div>
+    <div class="flags"style="margin-top: 25px;">🎉 🎈 🎊 🎈 🎉</div>
 
     <img src="balloon-left.png" class="balloon-img left">
     <img src="balloon-right.png" class="balloon-img right">
@@ -156,6 +179,12 @@ button:hover {
         وضحكتك سبب أمان<br>
         وكل سنة وانتي أقرب لقلبي 🤍
     </div>
+    <div class="music-box">
+    <button id="musicBtn" onclick="toggleMusic()">شغّل الأغنية🎵</button>
+</div>
+
+<audio id="music" src="song.mp3"></audio>
+
 </div>
 
 <canvas id="confetti"></canvas>
@@ -258,6 +287,19 @@ function showSurprise(){
     document.getElementById("surprise").style.display="block";
     startExplosion(x,y);
 }
+const music = document.getElementById("music");
+const musicBtn = document.getElementById("musicBtn");
+
+function toggleMusic() {
+    if (music.paused) {
+        music.play();
+        musicBtn.innerText = "إيقاف الأغنية⏸️";
+    } else {
+        music.pause();
+        musicBtn.innerText = "شغّل الأغنية🎵";
+    }
+}
+
 </script>
 
 </body>
